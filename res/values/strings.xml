@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GameClient</string>
+    <string name="nick_name">nick name</string>
+    <string name="password">password</string>
+    <string name="sign_up_log_in">sign up / log in</string>
+    <string name="remember_me">remember me</string>
+    <string name="lets_play_a_game">let&amp;apos;s play a game</string>
+</resources>
