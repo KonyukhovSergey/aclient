@@ -17,6 +17,7 @@ public class ActivityGame extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
+		fragmentLogin.show(this, fragmentLoginListener);
 	}
 
 	private FragmentLoginListener fragmentLoginListener = new FragmentLoginListener()
@@ -31,6 +32,7 @@ public class ActivityGame extends Activity
 		public void onLoginCancel()
 		{
 			Log.v("ActivityGame", "cancel");
+			finish();
 		}
 	};
 
@@ -41,10 +43,4 @@ public class ActivityGame extends Activity
 		super.onBackPressed();
 	}
 
-	@Override
-	protected void onResume()
-	{
-		fragmentLogin.show(this, fragmentLoginListener);
-		super.onResume();
-	}
 }
