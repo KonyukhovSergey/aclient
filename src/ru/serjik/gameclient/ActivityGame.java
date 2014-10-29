@@ -1,13 +1,9 @@
 package ru.serjik.gameclient;
 
 import ru.serjik.gameclient.FragmentLogin.FragmentLoginListener;
-import android.R.fraction;
 import android.app.Activity;
-import android.app.FragmentManager.OnBackStackChangedListener;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup;
 
 public class ActivityGame extends Activity

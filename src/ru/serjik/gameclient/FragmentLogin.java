@@ -1,7 +1,8 @@
 package ru.serjik.gameclient;
 
-import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -33,14 +34,12 @@ public class FragmentLogin extends GameFragment
 			{
 				if (actionId == EditorInfo.IME_ACTION_DONE)
 				{
-					fragmentLoginListener.onLoginDataDone(editLogin.getText().toString(), editPassword.getText()
-							.toString());
-
-					hide();
+					login();
 				}
 			}
 			return false;
 		}
+
 	};
 
 	@Override
@@ -50,6 +49,9 @@ public class FragmentLogin extends GameFragment
 		editPassword = (EditText) findViewById(R.id.edit_password);
 		editPassword.setOnEditorActionListener(onEditorActionListener);
 		checkBoxRememberMe = (CheckBox) findViewById(R.id.check_box_remember_me);
+
+		findViewById(R.id.button_cancel).setOnClickListener(onClickListener);
+		findViewById(R.id.button_login).setOnClickListener(onClickListener);
 
 		editLogin.setText(app.cfg.get(LOGIN));
 		editPassword.setText(app.cfg.get(PASSWORD));
@@ -91,5 +93,29 @@ public class FragmentLogin extends GameFragment
 	protected int getLayoutResouce()
 	{
 		return R.layout.fragment_login;
+	}
+
+	private OnClickListener onClickListener = new OnClickListener()
+	{
+		public void onClick(View v)
+		{
+			switch (v.getId())
+			{
+			case R.id.button_cancel:
+				onBackPressed();
+				break;
+
+			case R.id.button_login:
+				login();
+				break;
+			}
+
+		}
+	};
+
+	private void login()
+	{
+		fragmentLoginListener.onLoginDataDone(editLogin.getText().toString(), editPassword.getText().toString());
+		hide();
 	}
 }
