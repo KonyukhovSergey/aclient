@@ -32,7 +32,7 @@ public class ActivityGame extends Activity
 		public void onLoginCancel()
 		{
 			Log.v("ActivityGame", "cancel");
-			finish();
+			//finish();
 		}
 	};
 

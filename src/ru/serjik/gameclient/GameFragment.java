@@ -17,6 +17,11 @@ public abstract class GameFragment
 	{
 	}
 
+	protected void onCancel()
+	{
+
+	}
+
 	protected abstract int getLayoutResouce();
 
 	public void show(ViewGroup root)
@@ -30,7 +35,11 @@ public abstract class GameFragment
 
 			onCreate();
 		}
-		root.addView(view);
+
+		if (view.getParent() == null)
+		{
+			root.addView(view);
+		}
 	}
 
 	public void hide()
