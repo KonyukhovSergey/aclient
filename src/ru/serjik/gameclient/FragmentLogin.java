@@ -1,5 +1,6 @@
 package ru.serjik.gameclient;
 
+import ru.serjik.ui.OneFragment;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -9,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
-public class FragmentLogin extends GameFragment
+public class FragmentLogin extends OneFragment
 {
 	private static final String REMEMBER_ME = "remember_me";
 	private static final String PASSWORD = "password";
@@ -43,7 +44,7 @@ public class FragmentLogin extends GameFragment
 	};
 
 	@Override
-	public void onCreate()
+	public void onStart()
 	{
 		editLogin = (EditText) findViewById(R.id.edit_login);
 		editPassword = (EditText) findViewById(R.id.edit_password);
@@ -75,24 +76,11 @@ public class FragmentLogin extends GameFragment
 		}
 	}
 
-	@Override
-	public void onBackPressed()
-	{
-		super.onBackPressed();
-		fragmentLoginListener.onLoginCancel();
-	}
-
 	public interface FragmentLoginListener
 	{
 		void onLoginDataDone(String user, String pass);
 
 		void onLoginCancel();
-	}
-
-	@Override
-	protected int getLayoutResouce()
-	{
-		return R.layout.fragment_login;
 	}
 
 	private OnClickListener onClickListener = new OnClickListener()
@@ -102,7 +90,7 @@ public class FragmentLogin extends GameFragment
 			switch (v.getId())
 			{
 			case R.id.button_cancel:
-				onBackPressed();
+				cancel();
 				break;
 
 			case R.id.button_login:
@@ -116,6 +104,25 @@ public class FragmentLogin extends GameFragment
 	private void login()
 	{
 		fragmentLoginListener.onLoginDataDone(editLogin.getText().toString(), editPassword.getText().toString());
-		hide();
+		close();
+	}
+
+	private void cancel()
+	{
+		fragmentLoginListener.onLoginCancel();
+		close();
+	}
+
+	@Override
+	public boolean canBack()
+	{
+		fragmentLoginListener.onLoginCancel();
+		return true;
+	}
+
+	@Override
+	protected int latoutResourse()
+	{
+		return R.layout.fragment_login;
 	}
 }

@@ -1,7 +1,7 @@
 package ru.serjik.gameclient;
 
-import android.content.Context;
 import js.utils.ApplicationPreferencesBase;
+import android.content.Context;
 
 public class cfg extends ApplicationPreferencesBase
 {
