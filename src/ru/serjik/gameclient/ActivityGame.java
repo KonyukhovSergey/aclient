@@ -1,7 +1,10 @@
 package ru.serjik.gameclient;
 
 import ru.serjik.ui.OneActivity;
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 
 public class ActivityGame extends OneActivity
 {
@@ -10,43 +13,16 @@ public class ActivityGame extends OneActivity
 	{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
+
+		permitNetwork();
+
 		show(new FragmentMain());
 	}
-	
-	
 
-//	@Override
-//	protected void onCreate(Bundle savedInstanceState)
-//	{
-//		super.onCreate(savedInstanceState);
-//		setContentView(R.layout.activity_game);
-//		
-//		fragmentLogin = new FragmentLogin(fragmentLoginListener);
-//		fragmentLogin.show((ViewGroup) findViewById(R.id.layout_root));
-//	}
-//
-//	private FragmentLoginListener fragmentLoginListener = new FragmentLoginListener()
-//	{
-//		@Override
-//		public void onLoginDataDone(String user, String pass)
-//		{
-//			Log.v("ActivityGame", "user: " + user + " pass: " + pass);
-//		}
-//
-//		@Override
-//		public void onLoginCancel()
-//		{
-//			Log.v("ActivityGame", "cancel");
-//			//finish();
-//		}
-//	};
-//
-//	@Override
-//	public void onBackPressed()
-//	{
-//		fragmentLogin.onBackPressed();
-//		super.onBackPressed();
-//	}
-
+	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
+	private void permitNetwork()
+	{
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitNetwork().build();
+		StrictMode.setThreadPolicy(policy);
+	}
 }

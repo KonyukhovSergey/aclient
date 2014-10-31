@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
-public class FragmentLogin extends OneFragment
+public class FragmentLogin extends OneFragment implements OnEditorActionListener, OnClickListener
 {
 	private static final String REMEMBER_ME = "remember_me";
 	private static final String PASSWORD = "password";
@@ -26,33 +26,29 @@ public class FragmentLogin extends OneFragment
 		this.fragmentLoginListener = fragmentLoginListener;
 	}
 
-	private OnEditorActionListener onEditorActionListener = new OnEditorActionListener()
+	@Override
+	public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
 	{
-		@Override
-		public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
+		if (v == editPassword)
 		{
-			if (v == editPassword)
+			if (actionId == EditorInfo.IME_ACTION_DONE)
 			{
-				if (actionId == EditorInfo.IME_ACTION_DONE)
-				{
-					login();
-				}
+				login();
 			}
-			return false;
 		}
-
-	};
+		return false;
+	}
 
 	@Override
 	public void onStart()
 	{
 		editLogin = (EditText) findViewById(R.id.edit_login);
 		editPassword = (EditText) findViewById(R.id.edit_password);
-		editPassword.setOnEditorActionListener(onEditorActionListener);
+		editPassword.setOnEditorActionListener(this);
 		checkBoxRememberMe = (CheckBox) findViewById(R.id.check_box_remember_me);
 
-		findViewById(R.id.button_cancel).setOnClickListener(onClickListener);
-		findViewById(R.id.button_login).setOnClickListener(onClickListener);
+		findViewById(R.id.button_cancel).setOnClickListener(this);
+		findViewById(R.id.button_login).setOnClickListener(this);
 
 		editLogin.setText(app.cfg.get(LOGIN));
 		editPassword.setText(app.cfg.get(PASSWORD));
@@ -83,23 +79,19 @@ public class FragmentLogin extends OneFragment
 		void onLoginCancel();
 	}
 
-	private OnClickListener onClickListener = new OnClickListener()
+	public void onClick(View v)
 	{
-		public void onClick(View v)
+		switch (v.getId())
 		{
-			switch (v.getId())
-			{
-			case R.id.button_cancel:
-				cancel();
-				break;
+		case R.id.button_cancel:
+			cancel();
+			break;
 
-			case R.id.button_login:
-				login();
-				break;
-			}
-
+		case R.id.button_login:
+			login();
+			break;
 		}
-	};
+	}
 
 	private void login()
 	{
