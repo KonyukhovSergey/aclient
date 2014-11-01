@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="2dp" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp" >
+
+        <Button
+            android:layout_width="64dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/selector_button"
+            android:text="mlf" />
+
+        <Button
+            android:id="@+id/button_move_forward"
+            android:layout_width="64dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/selector_button"
+            android:text="mf" />
+
+        <Button
+            android:layout_width="64dp"
+            android:layout_height="48dp"
+            android:background="@drawable/selector_button"
+            android:text="mrf" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp" >
+
+        <Button
+            android:id="@+id/button_rotate_left"
+            android:layout_width="64dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/selector_button"
+            android:text="rl" />
+
+        <Button
+            android:layout_width="64dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/selector_button"
+            android:text="act" />
+
+        <Button
+            android:id="@+id/rotate_right"
+            android:layout_width="64dp"
+            android:layout_height="48dp"
+            android:background="@drawable/selector_button"
+            android:text="rr" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:layout_width="64dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/selector_button"
+            android:text="mlb" />
+
+        <Button
+            android:id="@+id/button_move_backward"
+            android:layout_width="64dp"
+            android:layout_height="48dp"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/selector_button"
+            android:text="mb" />
+
+        <Button
+            android:layout_width="64dp"
+            android:layout_height="48dp"
+            android:background="@drawable/selector_button"
+            android:text="mrb" />
+    </LinearLayout>
+
+</LinearLayout>

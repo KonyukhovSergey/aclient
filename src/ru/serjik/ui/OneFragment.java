@@ -1,5 +1,6 @@
 package ru.serjik.ui;
 
+import android.util.Log;
 import android.view.View;
 
 public abstract class OneFragment
@@ -16,6 +17,7 @@ public abstract class OneFragment
 
 	public void onClose()
 	{
+		Log.v("eerer", "onclode");
 	}
 
 	public void show()
@@ -25,7 +27,6 @@ public abstract class OneFragment
 
 	public void close()
 	{
-		onClose();
 		OneActivity.manager().close(this);
 	}
 

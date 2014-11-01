@@ -2,11 +2,8 @@ package ru.serjik.ui;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
-
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
@@ -28,6 +25,7 @@ public class OneActivity extends Activity
 
 	public void close(OneFragment fragment)
 	{
+		fragment.onClose();
 		fragments.remove(fragment);
 		rootViewGroup.removeView(fragment.view());
 		if (fragments.size() == 0)

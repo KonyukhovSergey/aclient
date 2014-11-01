@@ -2,15 +2,13 @@ package ru.serjik.gameclient;
 
 import ru.serjik.ui.OneFragment;
 import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
-public class FragmentLogin extends OneFragment implements OnEditorActionListener, OnClickListener
+public class FragmentLogin extends OneFragment implements OnEditorActionListener
 {
 	private static final String REMEMBER_ME = "remember_me";
 	private static final String PASSWORD = "password";
@@ -19,6 +17,7 @@ public class FragmentLogin extends OneFragment implements OnEditorActionListener
 	private EditText editLogin;
 	private EditText editPassword;
 	private CheckBox checkBoxRememberMe;
+
 	private FragmentLoginListener fragmentLoginListener;
 
 	public FragmentLogin(FragmentLoginListener fragmentLoginListener)
@@ -47,12 +46,14 @@ public class FragmentLogin extends OneFragment implements OnEditorActionListener
 		editPassword.setOnEditorActionListener(this);
 		checkBoxRememberMe = (CheckBox) findViewById(R.id.check_box_remember_me);
 
-		findViewById(R.id.button_cancel).setOnClickListener(this);
-		findViewById(R.id.button_login).setOnClickListener(this);
+		// findViewById(R.id.button_cancel).setOnClickListener(this);
+		// findViewById(R.id.button_login).setOnClickListener(this);
 
 		editLogin.setText(app.cfg.get(LOGIN));
 		editPassword.setText(app.cfg.get(PASSWORD));
 		checkBoxRememberMe.setChecked(app.cfg.get(REMEMBER_ME).equals("true") ? true : false);
+
+		// view.setFocusableInTouchMode(true);
 	}
 
 	@Override
@@ -79,19 +80,19 @@ public class FragmentLogin extends OneFragment implements OnEditorActionListener
 		void onLoginCancel();
 	}
 
-	public void onClick(View v)
-	{
-		switch (v.getId())
-		{
-		case R.id.button_cancel:
-			cancel();
-			break;
-
-		case R.id.button_login:
-			login();
-			break;
-		}
-	}
+	// public void onClick(View v)
+	// {
+	// switch (v.getId())
+	// {
+	// case R.id.button_cancel:
+	// cancel();
+	// break;
+	//
+	// case R.id.button_login:
+	// login();
+	// break;
+	// }
+	// }
 
 	private void login()
 	{
