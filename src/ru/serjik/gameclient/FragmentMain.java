@@ -1,6 +1,8 @@
 package ru.serjik.gameclient;
 
 import android.util.Log;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 import ru.serjik.gameclient.Autorizator.AutorizatorListener;
 import ru.serjik.gameclient.FragmentLogin.FragmentLoginListener;
@@ -69,7 +71,6 @@ public class FragmentMain extends OneFragment implements FragmentLoginListener, 
 	public void onConnect()
 	{
 		Log.v(getClass().getSimpleName(), "onConnect");
-		// TODO Auto-generated method stub
 	}
 
 	@Override
@@ -77,6 +78,7 @@ public class FragmentMain extends OneFragment implements FragmentLoginListener, 
 	{
 		Log.v(getClass().getSimpleName(), "onDisconnect");
 		view.removeCallbacks(this);
+		close();
 	}
 
 	@Override
@@ -110,7 +112,8 @@ public class FragmentMain extends OneFragment implements FragmentLoginListener, 
 	@Override
 	public void onAutorizationSuccess(ClientData client)
 	{
-		Toast.makeText(view.getContext(), "good job", Toast.LENGTH_LONG).show();
+		new MovementController(client, (ViewGroup) view);
+		new Avatar(client, (TextView) findViewById(R.id.text_info));
 	}
 
 }
