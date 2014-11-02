@@ -72,8 +72,11 @@ public class Avatar implements MessageListener
 	{
 		if (values[1].equals("player"))
 		{
-			Player player = new Player(values);
-			objects.add(player);
+			objects.add(new Player(values));
+		}
+		else if (values[1].equals("item"))
+		{
+			objects.add(new GameItem(values));
 		}
 	}
 
